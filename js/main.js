@@ -75,80 +75,22 @@ function turnOff(elem){
 }
 
 $( document ).ready(function() {
-    setInterval(function(){
-        // $('.segment').toggleClass('on');
-        $('.dot').toggleClass('on');
-    },750);
+    // setInterval(function(){
+    //     $('.dot').toggleClass('on');
+    // },500);
 
     console.log( checkVal(7,constants[4]) );
 
     setInterval(function(){
         updateDate();
-        console.log(currentSeconds);
         splitDigits(currentSeconds,seconds);
-
-
-        // var hours = [];
-        // var hourString = currentSeconds.toString();
-
-        // for (var i = 0; i < hourString.length; i++) {
-        //     hours.push(+hourString.charAt(i));
-        // }
-
         printDigits(seconds,'.s');
 
-        // if ( checkVal(hours[1],a) == true){
-        //     turnOn('.s2 .a');
-        // } else {
-        //     turnOff('.s2 .a')
-        // }
+        splitDigits(currentMinutes,minutes);
+        printDigits(minutes,'.m');
 
-        // if ( checkVal(hours[1],b) == true){
-        //     turnOn('.s2 .b');
-        // } else {
-        //     turnOff('.s2 .b')
-        // }
-
-        // if ( checkVal(hours[1],c) == true){
-        //     turnOn('.s2 .c');
-        // } else {
-        //     turnOff('.s2 .c')
-        // }
-
-        // if ( checkVal(hours[1],d) == true){
-        //     turnOn('.s2 .d');
-        // } else {
-        //     turnOff('.s2 .d')
-        // }
-
-        // if ( checkVal(hours[1],e) == true){
-        //     turnOn('.s2 .e');
-        // } else {
-        //     turnOff('.s2 .e')
-        // }
-
-        // if ( checkVal(hours[1],f) == true){
-        //     turnOn('.s2 .f');
-        // } else {
-        //     turnOff('.s2 .f')
-        // }
-
-        // if ( checkVal(hours[1],g) == true){
-        //     turnOn('.s2 .g');
-        // } else {
-        //     turnOff('.s2 .g')
-        // }
-
-
-
-        // for (var j = 0; j < hours.length; j++){
-        //     if ( checkVal(hours[j],a) == true){
-        //         turnOn('.s2 .a');
-        //     }
-        // }
-
-        // console.log(hours);
-
+        splitDigits(currentHours,hours);
+        printDigits(hours,'.h');
     },1000);
 
 });

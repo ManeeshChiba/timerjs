@@ -27,138 +27,676 @@ body.upload.bg6 {background-image: url( '@{images}background-06.jpg');}
 body.upload.bg7 {background-image: url( '@{images}background-07.jpg');}
 
 html,body {height: 100%;}
-.screen {width: 100%; height: 100%;}
-
-@segment-height: 18px;
-@segment-width: 150px;
-@segment-space: 18px;
-@offset: 1.15;
-@digit-height: (((@segment-width)*@offset)*2)+(@segment-space*3);
+.screen {width: 100%; height: 100%; display: table;}
+.time-display {display: table-cell; vertical-align: middle; text-align: center;}
 
 @off-colour: rgb(7, 18, 5);
 @on-colour: rgb(50, 132, 32);
 
-.digit:not(:last-of-type) {margin-right: @segment-space;}
-.digit { width: 186px; height: @digit-height; display: block; position: relative; float: left;
-	.segment {background: @off-colour; border-radius: @segment-width; position: absolute; z-index: 0; transition: all 0.5s ease;}
-	.on {background: @on-colour;}
+@media @max {
+	@segment-height: 21px;
+	@segment-width: 150px;
+	@segment-space: 21px;
+	@offset: 1.05;
+	@digit-height: (((@segment-width)*@offset)*2)+(@segment-space*3);
 
-	.horizontal {width: @segment-width; height: @segment-height;}
-	.vertical {width: @segment-height; height: ((@segment-width)*@offset);}
 
-	.a {top: 0; left: @segment-space;
-		&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
-		&:before { 	
-			left: -((@segment-space/2));
-			border-left: (@segment-space/2) solid @body-bg;
-			border-right: (@segment-space/2) solid transparent;
-			border-bottom: @segment-space solid @body-bg;
+	.digit:not(:last-of-type) {margin-right: (@segment-space*1.5);}
+	.digit { width: 192px; height: @digit-height; display: block; position: relative; float: left;
+		.segment {background: @off-colour; border-radius: @segment-width; position: absolute; z-index: 0; transition: all 0.5s ease;}
+		.on {background: @on-colour;}
+
+		.horizontal {width: @segment-width; height: @segment-height;}
+		.vertical {width: @segment-height; height: ((@segment-width)*@offset);}
+
+		.a {top: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
 		}
-		&:after {
-			right: -((@segment-space/2));
-			border-right: (@segment-space/2) solid @body-bg;
-			border-left: (@segment-space/2) solid transparent;
-			border-bottom: @segment-space solid @body-bg;
+		.b {top: @segment-space; right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.c {top: (@segment-space+((@segment-width)*@offset)+@segment-space); right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.d {bottom: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+		}
+		.e {top: (@segment-space+((@segment-width)*@offset)+@segment-space); left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.f {top: @segment-space; left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.g {top:(@segment-space+((@segment-width)*@offset)); left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: 0;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after {
+				right: 0;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
 		}
 	}
-	.b {top: @segment-space; right: 0;
-		&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
-		&:before { 	
-			top:-((@segment-space/2));
-			border-bottom: (@segment-space/2) solid transparent;
-			border-left: @segment-space solid @body-bg;
-			border-top: (@segment-space/2) solid @body-bg;
-		}
-		&:after { 	
-			bottom:-((@segment-space/2));
-			border-top: (@segment-space/2) solid transparent;
-			border-left: @segment-space solid @body-bg;
-			border-bottom: (@segment-space/2) solid @body-bg;
-		}
+	.hours,.minutes,.seconds {display: inline-block; overflow: auto; text-align: center;}
+	.separator{ width: @segment-space; height: @digit-height; display: inline-block; position: relative; text-align: center; margin: 0 (@segment-space*2);
+		.dot {background:@off-colour; width: @segment-space; height: @segment-space; border-radius: @segment-space; transition: all 0.5s ease; position: absolute;}
+		.dot.on {background: @on-colour;}
+
+		.dot:first-of-type {top: 33%;}
+		.dot:last-of-type {top: 66%;}
 	}
-	.c {top: (@segment-space+((@segment-width)*@offset)+@segment-space); right: 0;
-		&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
-		&:before { 	
-			top:-((@segment-space/2));
-			border-bottom: (@segment-space/2) solid transparent;
-			border-left: @segment-space solid @body-bg;
-			border-top: (@segment-space/2) solid @body-bg;
-		}
-		&:after { 	
-			bottom:-((@segment-space/2));
-			border-top: (@segment-space/2) solid transparent;
-			border-left: @segment-space solid @body-bg;
-			border-bottom: (@segment-space/2) solid @body-bg;
-		}
-	}
-	.d {bottom: 0; left: @segment-space;
-		&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
-		&:before { 	
-			left: -((@segment-space/2));
-			border-left: (@segment-space/2) solid @body-bg;
-			border-right: (@segment-space/2) solid transparent;
-			border-top: @segment-space solid @body-bg;
-		}
-		&:after {
-			right: -((@segment-space/2));
-			border-right: (@segment-space/2) solid @body-bg;
-			border-left: (@segment-space/2) solid transparent;
-			border-top: @segment-space solid @body-bg;
-		}
-	}
-	.e {top: (@segment-space+((@segment-width)*@offset)+@segment-space); left: 0;
-		&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
-		&:before { 	
-			top:-((@segment-space/2));
-			border-bottom: (@segment-space/2) solid transparent;
-			border-right: @segment-space solid @body-bg;
-			border-top: (@segment-space/2) solid @body-bg;
-		}
-		&:after { 	
-			bottom:-((@segment-space/2));
-			border-top: (@segment-space/2) solid transparent;
-			border-right: @segment-space solid @body-bg;
-			border-bottom: (@segment-space/2) solid @body-bg;
-		}
-	}
-	.f {top: @segment-space; left: 0;
-		&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
-		&:before { 	
-			top:-((@segment-space/2));
-			border-bottom: (@segment-space/2) solid transparent;
-			border-right: @segment-space solid @body-bg;
-			border-top: (@segment-space/2) solid @body-bg;
-		}
-		&:after { 	
-			bottom:-((@segment-space/2));
-			border-top: (@segment-space/2) solid transparent;
-			border-right: @segment-space solid @body-bg;
-			border-bottom: (@segment-space/2) solid @body-bg;
-		}
-	}
-	.g {top:(@segment-space+((@segment-width)*@offset)); left: @segment-space;
-		&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
-		&:before { 	
-			left: 0;
-			border-right: (@segment-space/2) solid transparent;
-			border-top: (@segment-space/2) solid @body-bg;
-			border-bottom: (@segment-space/2) solid @body-bg;
-		}
-		&:after {
-			right: 0;
-			border-left: (@segment-space/2) solid transparent;
-			border-top: (@segment-space/2) solid @body-bg;
-			border-bottom: (@segment-space/2) solid @body-bg;
-		}
-	}
+
 }
 
-.separator{ width: @segment-space; height: @digit-height; display: block; position: relative; float: left; margin: 0 @segment-space;
-	.dot {background:@off-colour; width: @segment-space; height: @segment-space; border-radius: @segment-space; transition: all 0.5s ease; position: absolute;}
-	.dot.on {background: @on-colour;}
+@media @laptop {
+	@segment-height: 18px;
+	@segment-width: 120px;
+	@segment-space: 18px;
+	@offset: 1.05;
+	@digit-height: (((@segment-width)*@offset)*2)+(@segment-space*3);
 
-	.dot:first-of-type {top: 33%;}
-	.dot:last-of-type {top: 66%;}
+
+	.digit:not(:last-of-type) {margin-right: (@segment-space*1.5);}
+	.digit { width: 156px; height: @digit-height; display: block; position: relative; float: left;
+		.segment {background: @off-colour; border-radius: @segment-width; position: absolute; z-index: 0; transition: all 0.5s ease;}
+		.on {background: @on-colour;}
+
+		.horizontal {width: @segment-width; height: @segment-height;}
+		.vertical {width: @segment-height; height: ((@segment-width)*@offset);}
+
+		.a {top: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+		}
+		.b {top: @segment-space; right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.c {top: (@segment-space+((@segment-width)*@offset)+@segment-space); right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.d {bottom: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+		}
+		.e {top: (@segment-space+((@segment-width)*@offset)+@segment-space); left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.f {top: @segment-space; left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.g {top:(@segment-space+((@segment-width)*@offset)); left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: 0;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after {
+				right: 0;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+	}
+	.hours,.minutes,.seconds {display: inline-block; overflow: auto; text-align: center;}
+	.separator{ width: @segment-space; height: @digit-height; display: inline-block; position: relative; text-align: center; margin: 0 (@segment-space*2);
+		.dot {background:@off-colour; width: @segment-space; height: @segment-space; border-radius: @segment-space; transition: all 0.5s ease; position: absolute;}
+		.dot.on {background: @on-colour;}
+
+		.dot:first-of-type {top: 33%;}
+		.dot:last-of-type {top: 66%;}
+	}
+
+}
+
+@media @tablet {
+	@segment-height: 15px;
+	@segment-width: 80px;
+	@segment-space: 15px;
+	@offset: 1;
+	@digit-height: (((@segment-width)*@offset)*2)+(@segment-space*3);
+
+
+	.digit:not(:last-of-type) {margin-right: (@segment-space*1.5);}
+	.digit { width: 110px; height: @digit-height; display: block; position: relative; float: left;
+		.segment {background: @off-colour; border-radius: @segment-width; position: absolute; z-index: 0; transition: all 0.5s ease;}
+		.on {background: @on-colour;}
+
+		.horizontal {width: @segment-width; height: @segment-height;}
+		.vertical {width: @segment-height; height: ((@segment-width)*@offset);}
+
+		.a {top: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+		}
+		.b {top: @segment-space; right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.c {top: (@segment-space+((@segment-width)*@offset)+@segment-space); right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.d {bottom: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+		}
+		.e {top: (@segment-space+((@segment-width)*@offset)+@segment-space); left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.f {top: @segment-space; left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.g {top:(@segment-space+((@segment-width)*@offset)); left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: 0;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after {
+				right: 0;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+	}
+	.hours,.minutes,.seconds {display: inline-block; overflow: auto; text-align: center;}
+	.separator{ width: @segment-space; height: @digit-height; display: inline-block; position: relative; text-align: center; margin: 0 (@segment-space*2);
+		.dot {background:@off-colour; width: @segment-space; height: @segment-space; border-radius: @segment-space; transition: all 0.5s ease; position: absolute;}
+		.dot.on {background: @on-colour;}
+
+		.dot:first-of-type {top: 33%;}
+		.dot:last-of-type {top: 66%;}
+	}
+
+}
+
+
+@media @mobile {
+	@segment-height: 8px;
+	@segment-width: 40px;
+	@segment-space: 8px;
+	@offset: 1;
+	@digit-height: (((@segment-width)*@offset)*2)+(@segment-space*3);
+
+
+	.digit:not(:last-of-type) {margin-right: (@segment-space*1.5);}
+	.digit { width: 56px; height: @digit-height; display: block; position: relative; float: left;
+		.segment {background: @off-colour; border-radius: @segment-width; position: absolute; z-index: 0; transition: all 0.5s ease;}
+		.on {background: @on-colour;}
+
+		.horizontal {width: @segment-width; height: @segment-height;}
+		.vertical {width: @segment-height; height: ((@segment-width)*@offset);}
+
+		.a {top: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+		}
+		.b {top: @segment-space; right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.c {top: (@segment-space+((@segment-width)*@offset)+@segment-space); right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.d {bottom: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+		}
+		.e {top: (@segment-space+((@segment-width)*@offset)+@segment-space); left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.f {top: @segment-space; left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.g {top:(@segment-space+((@segment-width)*@offset)); left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: 0;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after {
+				right: 0;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+	}
+	.hours,.minutes,.seconds {display: inline-block; overflow: auto; text-align: center; white-space: nowrap;}
+	.separator{ width: @segment-space; height: @digit-height; display: inline-block; position: relative; text-align: center; margin: 0 (@segment-space*2); white-space: nowrap;
+		.dot {background:@off-colour; width: @segment-space; height: @segment-space; border-radius: @segment-space; transition: all 0.5s ease; position: absolute;}
+		.dot.on {background: @on-colour;}
+
+		.dot:first-of-type {top: 33%;}
+		.dot:last-of-type {top: 66%;}
+	}
+
+}
+
+@media only screen and (max-width:500px) {
+	@segment-height: 4px;
+	@segment-width: 16px;
+	@segment-space: 4px;
+	@offset: 1;
+	@digit-height: (((@segment-width)*@offset)*2)+(@segment-space*3);
+
+
+	.digit:not(:last-of-type) {margin-right: (@segment-space*1.5);}
+	.digit { width: 24px; height: @digit-height; display: block; position: relative; float: left;
+		.segment {background: @off-colour; border-radius: @segment-width; position: absolute; z-index: 0; transition: all 0.5s ease;}
+		.on {background: @on-colour;}
+
+		.horizontal {width: @segment-width; height: @segment-height;}
+		.vertical {width: @segment-height; height: ((@segment-width)*@offset);}
+
+		.a {top: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-bottom: @segment-space solid @body-bg;
+			}
+		}
+		.b {top: @segment-space; right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.c {top: (@segment-space+((@segment-width)*@offset)+@segment-space); right: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-left: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.d {bottom: 0; left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: -(ceil(@segment-space/2));
+				border-left: ceil(@segment-space/2) solid @body-bg;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+			&:after {
+				right: -(ceil(@segment-space/2));
+				border-right: ceil(@segment-space/2) solid @body-bg;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: @segment-space solid @body-bg;
+			}
+		}
+		.e {top: (@segment-space+((@segment-width)*@offset)+@segment-space); left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.f {top: @segment-space; left: 0;
+			&:before, &:after {content: ''; position: absolute; left: 0; width: 0; height: 0;}
+			&:before { 	
+				top:-(ceil(@segment-space/2));
+				border-bottom: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after { 	
+				bottom:-(ceil(@segment-space/2));
+				border-top: ceil(@segment-space/2) solid transparent;
+				border-right: @segment-space solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+		.g {top:(@segment-space+((@segment-width)*@offset)); left: @segment-space;
+			&:before, &:after {content: ''; position: absolute; bottom: 0; width: 0; height: 0;}
+			&:before { 	
+				left: 0;
+				border-right: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+			&:after {
+				right: 0;
+				border-left: ceil(@segment-space/2) solid transparent;
+				border-top: ceil(@segment-space/2) solid @body-bg;
+				border-bottom: ceil(@segment-space/2) solid @body-bg;
+			}
+		}
+	}
+	.hours,.minutes,.seconds {display: inline-block; overflow: auto; text-align: center; white-space: nowrap;}
+	.separator{ width: @segment-space; height: @digit-height; display: inline-block; position: relative; text-align: center; margin: 0 (@segment-space*2); white-space: nowrap;
+		.dot {background:@off-colour; width: @segment-space; height: @segment-space; border-radius: @segment-space; transition: all 0.5s ease; position: absolute;}
+		.dot.on {background: @on-colour;}
+
+		.dot:first-of-type {top: 33%;}
+		.dot:last-of-type {top: 66%;}
+	}
+
 }
 
 /*Material Card*/
