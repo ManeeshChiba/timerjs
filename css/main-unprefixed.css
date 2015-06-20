@@ -17,7 +17,7 @@ html,
 body {
   min-height: 100%;
   overflow-x: hidden;
-  background: #cfd8dc;
+  background: #000000;
 }
 html,
 button,
@@ -457,6 +457,235 @@ body.upload.bg6 {
 body.upload.bg7 {
   background-image: url('../img/background-07.jpg');
 }
+html,
+body {
+  height: 100%;
+}
+.screen {
+  width: 100%;
+  height: 100%;
+}
+.digit:not(:last-of-type) {
+  margin-right: 18px;
+}
+.digit {
+  width: 186px;
+  height: 399px;
+  display: block;
+  position: relative;
+  float: left;
+}
+.digit .segment {
+  background: #071205;
+  border-radius: 150px;
+  position: absolute;
+  z-index: 0;
+  transition: all 0.5s ease;
+}
+.digit .on {
+  background: #328420;
+}
+.digit .horizontal {
+  width: 150px;
+  height: 18px;
+}
+.digit .vertical {
+  width: 18px;
+  height: 172.5px;
+}
+.digit .a {
+  top: 0;
+  left: 18px;
+}
+.digit .a:before,
+.digit .a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+.digit .a:before {
+  left: -9px;
+  border-left: 9px solid #000000;
+  border-right: 9px solid transparent;
+  border-bottom: 18px solid #000000;
+}
+.digit .a:after {
+  right: -9px;
+  border-right: 9px solid #000000;
+  border-left: 9px solid transparent;
+  border-bottom: 18px solid #000000;
+}
+.digit .b {
+  top: 18px;
+  right: 0;
+}
+.digit .b:before,
+.digit .b:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.digit .b:before {
+  top: -9px;
+  border-bottom: 9px solid transparent;
+  border-left: 18px solid #000000;
+  border-top: 9px solid #000000;
+}
+.digit .b:after {
+  bottom: -9px;
+  border-top: 9px solid transparent;
+  border-left: 18px solid #000000;
+  border-bottom: 9px solid #000000;
+}
+.digit .c {
+  top: 208.5px;
+  right: 0;
+}
+.digit .c:before,
+.digit .c:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.digit .c:before {
+  top: -9px;
+  border-bottom: 9px solid transparent;
+  border-left: 18px solid #000000;
+  border-top: 9px solid #000000;
+}
+.digit .c:after {
+  bottom: -9px;
+  border-top: 9px solid transparent;
+  border-left: 18px solid #000000;
+  border-bottom: 9px solid #000000;
+}
+.digit .d {
+  bottom: 0;
+  left: 18px;
+}
+.digit .d:before,
+.digit .d:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+.digit .d:before {
+  left: -9px;
+  border-left: 9px solid #000000;
+  border-right: 9px solid transparent;
+  border-top: 18px solid #000000;
+}
+.digit .d:after {
+  right: -9px;
+  border-right: 9px solid #000000;
+  border-left: 9px solid transparent;
+  border-top: 18px solid #000000;
+}
+.digit .e {
+  top: 208.5px;
+  left: 0;
+}
+.digit .e:before,
+.digit .e:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.digit .e:before {
+  top: -9px;
+  border-bottom: 9px solid transparent;
+  border-right: 18px solid #000000;
+  border-top: 9px solid #000000;
+}
+.digit .e:after {
+  bottom: -9px;
+  border-top: 9px solid transparent;
+  border-right: 18px solid #000000;
+  border-bottom: 9px solid #000000;
+}
+.digit .f {
+  top: 18px;
+  left: 0;
+}
+.digit .f:before,
+.digit .f:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.digit .f:before {
+  top: -9px;
+  border-bottom: 9px solid transparent;
+  border-right: 18px solid #000000;
+  border-top: 9px solid #000000;
+}
+.digit .f:after {
+  bottom: -9px;
+  border-top: 9px solid transparent;
+  border-right: 18px solid #000000;
+  border-bottom: 9px solid #000000;
+}
+.digit .g {
+  top: 190.5px;
+  left: 18px;
+}
+.digit .g:before,
+.digit .g:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+.digit .g:before {
+  left: 0;
+  border-right: 9px solid transparent;
+  border-top: 9px solid #000000;
+  border-bottom: 9px solid #000000;
+}
+.digit .g:after {
+  right: 0;
+  border-left: 9px solid transparent;
+  border-top: 9px solid #000000;
+  border-bottom: 9px solid #000000;
+}
+.separator {
+  width: 18px;
+  height: 399px;
+  display: block;
+  position: relative;
+  float: left;
+  margin: 0 18px;
+}
+.separator .dot {
+  background: #071205;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  transition: all 0.5s ease;
+  position: absolute;
+}
+.separator .dot.on {
+  background: #328420;
+}
+.separator .dot:first-of-type {
+  top: 33%;
+}
+.separator .dot:last-of-type {
+  top: 66%;
+}
 /*Material Card*/
 .m-card {
   position: relative;
@@ -644,68 +873,6 @@ footer p {
   font-weight: 700;
   color: #fff;
   text-shadow: 3px 0 5px rgba(0, 0, 0, 0.3);
-}
-.display {
-  background: #fff;
-}
-.display .card {
-  border: 1mm solid black;
-  padding: 5mm;
-  width: 11cm;
-  height: 6cm;
-  font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-  float: left;
-  margin-right: 1cm;
-  margin-bottom: 1cm;
-  page-break-before: auto;
-  /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
-  page-break-after: auto;
-  /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
-  page-break-inside: avoid;
-  /* or 'auto' */
-}
-.issue-code {
-  font-size: 12pt;
-  float: left;
-  width: 8.5cm;
-  margin-bottom: 0.25cm;
-}
-.card > .summary {
-  height: 7cm;
-}
-.issue-code + .summary {
-  height: 5.5cm;
-}
-.summary {
-  border-right: 0.5mm solid black;
-  float: left;
-  width: 8.5cm;
-  overflow: hidden;
-  padding-right: 0.25cm;
-}
-.estimate {
-  position: absolute;
-  top: 0.5mm;
-  right: 0.5cm;
-  text-align: right;
-  float: right;
-  width: 2cm;
-  font-size: 32pt;
-  font-weight: bold;
-}
-.assignee {
-  position: absolute;
-  bottom: 0.5cm;
-  right: 0.5cm;
-  text-align: right;
-  float: right;
-  font-size: 12pt;
-  width: 2cm;
-}
-.raw-html-output {
-  display: none;
 }
 /*Frameworks and Helpers*/
 /* ==========================================================================
