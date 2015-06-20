@@ -1,0 +1,165 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+@charset "UTF-8";
+
+/*Initialisation Styles*/
+@import 'partials/__file-locations.less';
+@import 'partials/__colours.less';
+@import 'partials/__base-styles.less';
+@import 'partials/__typography.less';
+@import 'partials/__functions.less';
+@import 'partials/__animations.less';
+@import 'partials/__breakpoints.less';
+@import 'partials/__toast.less';
+@import 'partials/__buttons.less';
+@import 'partials/__popover.less';
+
+
+/*Story Card*/
+
+/* Background */
+body.upload {background-size: cover; background-repeat: no-repeat;}
+body.upload.bg1 {background-image: url( '@{images}background-01.jpg');}
+body.upload.bg2 {background-image: url( '@{images}background-02.jpg');}
+body.upload.bg3 {background-image: url( '@{images}background-03.jpg');}
+body.upload.bg4 {background-image: url( '@{images}background-04.jpg');}
+body.upload.bg5 {background-image: url( '@{images}background-05.jpg');}
+body.upload.bg6 {background-image: url( '@{images}background-06.jpg');}
+body.upload.bg7 {background-image: url( '@{images}background-07.jpg');}
+
+
+/*Material Card*/
+.m-card {position: relative; overflow: hidden; margin: 3em auto 1em auto; padding: 1em; background-color: #fff; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); transition:all 0.25s ease; max-width: 450px; z-index: 1;
+	&:hover {box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+	
+	h1 {border-bottom: 1px solid @brand-highlight;
+		#because {font-size: 0.35em; text-align: center; display: block; margin-bottom: 0.5em; font-weight: 300;}
+	}
+	#logo {max-width: 300px; margin: 0 auto; display: block;}
+
+	h5 {margin: 0.5em 0 0.7em;}
+
+	#file-upload-container { cursor: pointer; border: 3px dashed @brand-highlight; display: block; width: 100%; height: 200px; border-radius: 25px; text-align: center;
+		input {display: none;}
+		#add-symbol {display: block; margin: 0 auto; height: 70%; fill :@text-colour-medium; max-width: 40px;
+			&:hover{ fill:@brand-highlight;	}
+		}
+		#file-name {display: block; margin: 0 auto; color:@text-colour-medium; max-width: 90%; word-break:break-all; }
+		.file-added {color: @text-colour-dark!important;}
+
+		&:hover {
+			#add-symbol {fill:@brand-highlight;}
+		}
+	}
+
+	button { width: 100%; padding-top: 1.3em;
+		#upload-symbol {fill:@brand-highlight; transition:all 0.25s ease; max-width: 36px; max-height: 36px; display: inline; vertical-align: middle; margin-top: -4px;}
+		span {display: inline-block;}
+		&:hover {
+			#upload-symbol {fill:#fff;}	
+			#upload-symbol #arrow {top: -12px;}		
+		}
+	}
+
+	button.disabled { pointer-events: none; cursor: default; color:@text-colour-medium; border-color: @text-colour-medium; background: @text-colour-light;
+		#upload-symbol {fill:@text-colour-medium;}
+	}
+
+	.how-to {display: block; text-align: center; width: 100%;  margin-top:1em; padding: 0.75em 0; font-weight: 300; transition:all 0.25s ease;
+		&:hover {transform: scale(1.2);}
+	}
+
+	#how-to { position: absolute; top: 0; left: 0; margin-top: 0!important; width: 100%; height: 100%; background: #fff; z-index: 3; padding: 1em; display: none;
+		h3 { border-bottom:1px solid @text-colour-dark; padding-bottom: 0.25em;}
+
+		#close { position: absolute; top: 1em; right: 1em;
+			#close-symbol {transform: rotate(45deg); max-width: 20px; max-height: 20px; fill:@text-colour-medium;}
+
+			&:hover { 
+				#close-symbol {fill:@brand-highlight;}
+			}
+		}
+	}
+
+	.step { float: left; width: 100%;
+		img {max-width: 120px; display: block; float: left; margin-right: 0.5em; border:1px solid @text-colour-dark;}
+		h6 {margin-bottom: 0.5em;}
+	}
+
+	#upload-animation {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 4; padding: 1em; text-align: center; opacity: 0; pointer-events: none; transition:opacity 0.25s ease;
+		h3 {margin-bottom: 0px;}
+	}
+
+	#upload-animation.show {opacity: 1;}
+}
+
+footer {width: 100%; text-align: center; position: fixed; bottom: 0; z-index: 0;
+	p {font-weight: 700; color:#fff; text-shadow: 3px 0 5px rgba(0,0,0,0.3);}
+}
+
+.display {background: #fff;}
+
+.display .card {
+    border:1mm solid black;
+    padding: 5mm;
+    width: 11cm;
+    height: 6cm;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin-right: 1cm;
+    margin-bottom: 1cm;
+    page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-inside: avoid; /* or 'auto' */
+}
+
+.issue-code {
+    font-size: 12pt;
+    float: left;
+    width: 8.5cm;
+    margin-bottom: 0.25cm;
+}
+
+.card > .summary {
+    height: 7cm;
+}
+
+.issue-code + .summary {
+    height: 5.5cm;
+}
+
+.summary {
+    border-right:0.5mm solid black;
+    float: left;
+    width: 8.5cm;
+    overflow: hidden;
+    padding-right: 0.25cm; 
+}
+
+.estimate {
+    position: absolute;
+    top: 0.5mm;
+    right: 0.5cm;
+    text-align: right;
+    float: right;
+    width: 2cm;
+    font-size: 32pt;
+    font-weight: bold;
+}
+
+.assignee {
+    position: absolute;
+    bottom: 0.5cm;
+    right: 0.5cm;
+    text-align: right;
+    float: right;
+    font-size: 12pt;
+    width: 2cm;
+}
+
+.raw-html-output {display: none;}
+
+
+/*Frameworks and Helpers*/
+@import 'partials/__grid.less';

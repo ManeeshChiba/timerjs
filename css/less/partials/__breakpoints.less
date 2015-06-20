@@ -1,0 +1,28 @@
+/* ==========================================================================
+  Breakpoints
+   ========================================================================== */
+   
+/* Break Points */
+@mobile-bp:600px; // Width is 100% of container (Essentially fluid from this point on.)
+@tablet-bp:768px;
+@laptop-bp:1280px;
+@max-bp:1600px;
+
+/* Variables for Media Queries*/
+@mobile-mq:599px;
+@tablet-mq:767px;
+@ipad-mq:1023px;
+@laptop-mq:1279px;
+@max-mq:1599px;
+
+@mobile: ~"only screen and (max-width:@{mobile-mq})";
+@tablet: ~"only screen and (max-width:@{tablet-mq})";
+@ipad: ~"only screen and (max-width:@{ipad-mq})";
+@laptop: ~"only screen and (max-width:@{laptop-mq})";
+@max: ~"only screen and (max-width:@{max-mq})";
+
+@mobile-only: ~"only screen and (max-width:@{mobile-mq})";
+@tablet-only: ~"only screen and (min-width:@{mobile-mq}) and (max-width:@{tablet-mq})";
+@ipad-only: ~"only screen and (min-width:@{tablet-mq}) and (max-width:@{ipad-mq})";
+@laptop-only: ~"only screen and (min-width:@{ipad-mq}) and (max-width:@{laptop-mq})";
+@max-only: ~"only screen and (min-width:@{laptop-mq}) and (max-width:@{max-mq})";

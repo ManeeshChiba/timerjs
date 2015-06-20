@@ -1,0 +1,17 @@
+/* ==========================================================================
+  Toast Notifications
+   ========================================================================== */
+
+.toast {background: @brand-primary; padding: 1em 0; display: none;
+	p {display:block; max-width: 80%; margin: 0 auto; text-align: center;}
+	.close-toast {display: inline-block; max-width: 15%; float: right; text-indent: -9999px; width: 1em; height: 1em; position: relative;
+		&:before,&:after {content: ''; display: block; position: absolute; top:0; left:0; width: 0.2em; height: 100%; background: #fff;}
+		&:before {transform:rotate(45deg); top: -1px;}
+		&:after {transform:rotate(-45deg);}
+	}
+}
+
+.toast.error { background: @error; color: #fff;}
+.toast.success { background: @success; color: #fff;}
+.toast.notification { background: @notification;}
+.toast.old-browser { background: #fff;}

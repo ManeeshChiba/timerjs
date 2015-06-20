@@ -1,0 +1,16 @@
+/* ==========================================================================
+  Buttons
+   ========================================================================== */
+
+.btn, input[type="submit"], button {display: inline-block; border:1px solid @brand-highlight; background: transparent; color:@brand-highlight; padding: 1em 2em; transition:all ease 0.25s; outline: 0; cursor: pointer; text-align: center;
+	&:hover {background: @brand-highlight; color: #fff;}
+}
+
+input.primary, .primary, button.active {font-weight: 500; background: @brand-highlight; color: @text-colour-light;}
+.clear, input[type="submit"].clear {border-color: transparent; background: transparent;
+	&:hover {background: transparent; color: @brand-highlight;}
+}
+
+.btn.small, input[type="submit"].small, button.small { font-size: 0.875em;}
+.btn.medium, input[type="submit"].medium, button.medium { font-size: 1em;}
+.btn.large, input[type="submit"], button.large{ font-size: 1.25em;}
